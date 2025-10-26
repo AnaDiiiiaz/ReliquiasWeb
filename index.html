@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reliquia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nova+Cut&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Lexend:wght@100..900&family=MedievalSharp&family=Rock+Salt&display=swap" rel="stylesheet">
+
+</head>
+<body class="death-mode min-h-screen">
+  
+  <!-- Header with Mode Toggle -->
+  <header class="section-card border-b">
+    <div class="max-w-9xl mx-auto flex items-center justify-between">
+      <nav class="flex-1">
+        <ul class="flex gap-6 justify-start" id="main-menu">
+          <li>
+            <a href="#section1" class="nav-link active font-medium text-sm" data-section="section1" id="menu-section1">
+              LA MUERTE
+            </a>
+          </li>
+          <li>
+            <a href="espada.html" class="nav-link font-medium text-sm" data-section="section2" id="menu-section2">
+              Espada
+            </a>
+          </li>
+          <li>
+            <a href="candelabro.html" class="nav-link font-medium text-sm" data-section="section3" id="menu-section3">
+              Candelabro
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <h1 class="Titulo text-center flex-1" id="mode-title">Reliquias</h1>
+      <div class="flex items-center gap-4 justify-end flex-1" id="toggle-container">
+        <span class="deslizador"> Muerte </span>
+        <a href="dia.html" id="mode-toggle" class="toggle-switch cursor-pointer" title="Cambiar a modo día">
+          <div class="toggle-slider"></div>
+        </a>
+        <span class="deslizador"> Vida </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section 
+    id="hero-section"
+    class="relative h-[60vh] flex items-center justify-center text-center bg-cover bg-center"
+    style="background-image: url('img/roman-petrov-WTUg6scGpm4-unsplash.jpg');">
+    
+ 
+    <!-- Overlay claro para modo vida -->
+
+    <!-- Texto principal -->
+    <div class="relative z-10 max-w-2xl mx-auto px-6">
+      <h2 class="text-4xl md:text-6xl font-bold mb-4 text-black life-mode:text-gray-900 transition-colors duration-500">
+      </h2>
+      <p class="text-lg md:text-xl text-black-200 life-mode:text-black-800">
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    
+    <!-- Section 1 -->
+    <section id="section1" class="content-section">
+      <div class="section-card rounded-lg p-4 mb-8">
+        <h2 class="text-2xl font-bold mb-4 accent-text" id="section1-title">El final</h2>
+        <div class="grid grid-cols-3 grid-rows-3 gap-6 min-h-[300px]">
+          <div class="col-start-1 row-start-1 flex items-start">
+            <p class="text-lg leading-relaxed mb-4 text-left indent-6">
+              La muerte no es un final, sino un suspiro que se disuelve en el aire.<br>
+              Es el eco que queda cuando el ruido se apaga,<br>
+              la sombra que da forma a la luz,<br>
+              el silencio que completa la melodía.
+            </p>
+          </div>
+          <div class="col-start-2 row-start-2 flex items-center">
+            <p class="text-lg leading-relaxed mb-4 text-left indent-6">
+              En su misterio habita la belleza del ciclo:<br>
+              lo que se apaga deja espacio a lo que nace,<br>
+              y cada despedida guarda el pulso de un nuevo comienzo.
+            </p>
+          </div>
+          <div class="col-start-3 row-start-3 flex items-end">
+            <p class="text-lg leading-relaxed mb-4 text-left indent-6">
+              Aquí, la muerte no asusta.<br>
+              Solo nos recuerda que cada instante —por breve que sea—<br>
+              tiene el poder de ser eterno.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="section2" class="content-section hidden flex justify-center h-[60vh]">
+      <video controls class="max-w-full max-h-[400px] rounded shadow-lg mx-auto self-start">
+        <source src="img/PixVerse_V5_Image_Text_540P_Crea_una_animacion.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="section3" class="content-section hidden">
+      <div class="section-card border rounded-lg p-4 mb-8">
+        <h2 class="text-2xl font-bold mb-4 accent-text" id="section3-title">The End</h2>
+        <p class="text-lg leading-relaxed mb-4" id="section3-text">
+          At the final threshold, we find not an ending but a transformation. 
+          The cycle completes, and from the ashes, new possibilities emerge.
+        </p>
+        <div class="section-card border rounded-lg p-4 mt-6">
+          <blockquote class="text-xl italic text-center" id="quote">
+            "In death, we find the meaning of life. In darkness, we appreciate the light."
+          </blockquote>
+          <p class="text-center mt-4 nav-link text-sm">— Ancient Wisdom</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Mode Toggle Functionality
+    const body = document.body;
+    const modeToggle = document.getElementById('mode-toggle');
+    const modeTitle = document.getElementById('mode-title');
+    let isLifeMode = false;
+
+    // Referencias a los elementos del menú
+    const menuSection1 = document.getElementById('menu-section1');
+    const menuSection2 = document.getElementById('menu-section2');
+    const menuSection3 = document.getElementById('menu-section3');
+
+    // Content for Death Mode
+    const deathContent = {
+      section1: {
+        title: "The Beginning",
+        text: "In the realm of shadows, where silence reigns eternal, the essence of existence fades into the void. Every ending marks a transition, a passage through the veil of the unknown.",
+        icons: ["⚰️", "🕯️", "🌑"],
+        labels: ["Mortality", "Memory", "Darkness"]
+      },
+      section2: {
+        title: "The Journey",
+        text: "Through the corridors of time, we traverse the landscape of despair and decay. Each step echoes with the weight of what once was, now lost to the ages.",
+        items: [
+          { icon: "🦴", title: "Remnants", desc: "What remains after the final breath" },
+          { icon: "⏳", title: "Time", desc: "The relentless march forward" },
+          { icon: "🌫️", title: "Mystery", desc: "The unknown that awaits us all" }
+        ]
+      },
+      section3: {
+        title: "The End",
+        text: "At the final threshold, we find not an ending but a transformation. The cycle completes, and from the ashes, new possibilities emerge.",
+        quote: "In death, we find the meaning of life. In darkness, we appreciate the light."
+      }
+    };
+
+    // Content for Life Mode
+    const lifeContent = {
+      menu: ["LA VIDA", "Jarrón", "Plato"],
+      section1: {
+        title: "La Vida",
+        text: "En el jardín de la existencia, donde la luz baila con alegría, la vida florece en infinitos colores. Cada comienzo es una celebración, una sinfonía de crecimiento y posibilidad.",
+        icons: ["🌸", "☀️", "🦋"],
+        labels: ["Crecimiento", "Energía", "Belleza"]
+      },
+      section2: {
+        title: "Jarrón",
+        text: "El jarrón contiene el agua y la flor, símbolo de abundancia y contención. En su forma, la vida se desborda y se multiplica.",
+        items: [
+          { icon: "🌱", title: "Renovación", desc: "El renacer constante de la naturaleza" },
+          { icon: "💚", title: "Amor", desc: "La fuerza que une a todos los seres vivos" },
+          { icon: "🌈", title: "Esperanza", desc: "La promesa de un nuevo día" }
+        ]
+      },
+      section3: {
+        title: "Plato",
+        text: "El plato recibe y comparte, es el espacio donde la vida se nutre y se celebra en comunidad.",
+        quote: "En la vida, descubrimos posibilidades infinitas. En la luz, vemos la belleza de la existencia."
+      }
+    };
+
+    // Al cargar la página, inicializa los textos del menú correctamente
+    menuSection1.textContent = deathContent.menu[0];
+    menuSection2.textContent = deathContent.menu[1];
+    menuSection3.textContent = deathContent.menu[2];
+
+    // Update content based on mode
+    function updateContent(content) {
+      // Section 1
+      document.getElementById('section1-title').textContent = content.section1.title;
+      document.getElementById('section1-text').textContent = content.section1.text;
+      
+      // Section 2
+      document.getElementById('section2-title').textContent = content.section2.title;
+      document.getElementById('section2-text').textContent = content.section2.text;
+      
+      // Section 3
+      document.getElementById('section3-title').textContent = content.section3.title;
+      document.getElementById('section3-text').textContent = content.section3.text;
+      document.getElementById('quote').textContent = `"${content.section3.quote}"`;
+    }
+
+    // Navigation Functionality
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.content-section');
+    const heroSection = document.getElementById('hero-section');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Remove active class from all links
+        navLinks.forEach(l => l.classList.remove('active'));
+        
+        // Add active class to clicked link
+        link.classList.add('active');
+        
+        // Hide all sections
+        sections.forEach(section => section.classList.add('hidden'));
+        
+        // Show selected section
+        const targetSection = link.getAttribute('data-section');
+        document.getElementById(targetSection).classList.remove('hidden');
+        
+        // Cambia el fondo del hero según la sección y el modo
+        if (targetSection === 'section1') {
+          if (isLifeMode) {
+            heroSection.style.backgroundImage = "url('img/MIRADAVIDA.png')";
+          } else {
+            heroSection.style.backgroundImage = "url('img/opcion3.png')";
+          }
+          heroSection.style.display = '';
+        } else {
+          heroSection.style.backgroundImage = "none";
+          heroSection.style.display = 'none';
+        }
+        
+      });
+      
+    });
+  </script>
+
+</body>
+</html>

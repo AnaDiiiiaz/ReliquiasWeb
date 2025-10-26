@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vida / Muerte | Landing</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      transition: background 0.5s;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      transition: background 0.5s;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      gap: 5vw;
+      z-index: 2;
+    }
+    .titulo {
+      font-family: 'Archivo Grotesk', Arial, sans-serif;
+      font-size: clamp(2.5rem, 8vw, 8rem);
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.5s, filter 0.3s;
+      padding: 0 1vw;
+    }
+    .vida {
+      color: #181824;
+      font-weight: 300;
+      font-family: 'Archivo Grotesk', Arial, sans-serif;
+    }
+    .muerte {
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Archivo Grotesk', Arial, sans-serif;
+      transition: color 0.5s, filter 0.3s;
+      filter: none;
+    }
+    .muerte.blur {
+      filter: blur(7px) brightness(1.2);
+    }
+    body.bg-black {
+      background: #0a0a0a !important;
+    }
+    body.bg-white {
+      background: #fff !important;
+    }
+    @media (max-width: 700px) {
+      .container { flex-direction: column; gap: 2.5rem; }
+      .titulo { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="titulo vida" id="vida">VIDA</div>
+    <div class="titulo muerte" id="muerte">MUERTE</div>
+  </div>
+  <script>
+    const vida = document.getElementById('vida');
+    const muerte = document.getElementById('muerte');
+    const body = document.body;
+
+    vida.addEventListener('mouseenter', () => {
+      body.classList.add('bg-white');
+      body.classList.remove('bg-black');
+      vida.style.color = '#181824';
+      muerte.style.color = '#fff';
+    });
+    vida.addEventListener('mouseleave', () => {
+      body.classList.remove('bg-white');
+    });
+    vida.addEventListener('click', () => {
+      window.location.href = 'dia.html';
+    });
+    muerte.addEventListener('mouseenter', () => {
+      body.classList.add('bg-black');
+      body.classList.remove('bg-white');
+      vida.style.opacity = '0';
+      vida.style.pointerEvents = 'none';
+      muerte.style.color = '#fff';
+      muerte.classList.add('blur');
+    });
+    muerte.addEventListener('mouseleave', () => {
+      body.classList.remove('bg-black');
+      vida.style.opacity = '1';
+      vida.style.pointerEvents = 'auto';
+      muerte.classList.remove('blur');
+      vida.style.color = '#181824';
+      muerte.style.color = '#fff';
+    });
+    muerte.addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

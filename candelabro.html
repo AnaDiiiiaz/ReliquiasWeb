@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candelabro | Reliquia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nova+Cut&display=swap" rel="stylesheet">
+</head>
+<body class="death-mode min-h-screen">
+  <header class="section-card border-b">
+    <div class="max-w-9xl mx-auto flex items-center justify-between">
+      <nav class="flex-1">
+        <ul class="flex gap-6 justify-start" id="main-menu">
+          <li>
+            <a href="index.html" class="nav-link font-medium text-sm" id="menu-section1">LA MUERTE</a>
+          </li>
+          <li>
+            <a href="espada.html" class="nav-link font-medium text-sm" id="menu-section2">Espada</a>
+          </li>
+          <li>
+            <a href="candelabro.html" class="nav-link font-medium text-sm active" id="menu-section3">Candelabro</a>
+          </li>
+        </ul>
+      </nav>
+      <h1 class="Titulo text-center flex-1" id="mode-title">Reliquias</h1>
+      <div class="flex items-center gap-4 justify-end flex-1" id="toggle-container">
+        <span class="deslizador"> Muerte </span>
+      </div>
+    </div>
+  </header>
+ <section 
+    id="hero-section"
+    class="relative flex items-center justify-center text-center bg-center"
+    style="background-image: url('img/ChatGPT\ Image\ 18\ oct\ 2025\,\ 19_52_36.png'); min-height: 100vh;">
+    <div class="relative z-10 max-w-2xl mx-auto px-6"></div>
+
+    <!-- Indicador con click -->
+    <div id="scroll-indicator" 
+         class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce cursor-pointer">
+      <svg width="32" height="32" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-2">
+        <path d="M16 6v20M24 18l-8 8-8-8"/>
+      </svg>
+    </div>
+  </section>
+   <!-- VIDEO SECTION -->
+  <div id="video-section" 
+       class="flex flex-col md:flex-row items-center justify-center gap-12 bg-black text-white py-16 px-8">
+    
+    <!-- Texto a la izquierda -->
+    <div class="flex-1 text-left">
+      <h3 class="text-4xl md:text-5xl font-bold mb-6">Candelabro</h3>
+      <p class="text-lg md:text-xl leading-relaxed max-w-md">
+       Símbolo de la luz y su desaparición, el candelabro es cuerpo y sombra a la vez. Ha sostenido llamas y rezos, celebraciones y duelos. Aunque la cera se haya agotado, en su metal persiste el brillo de lo que alguna vez iluminó.
+      </p>
+    </div>
+
+    <!-- Video a la derecha -->
+    <div class="flex-1 flex justify-center">
+      <video src="img/candelabrolento.mp4" autoplay loop muted playsinline
+        class="rounded-2xl shadow-lg w-full max-w-3xl h-auto" style="width:100%;max-width:900px;filter:brightness(1.25) contrast(1.1);">
+      </video>
+    </div>
+  </div>
+
+</body>
+<script>
+      let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const current = window.scrollY;
+      if (current > lastScrollTop && current < window.innerHeight * 0.3) {
+        document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
+      }
+      lastScrollTop = current;
+    });
+</script>
+</html>

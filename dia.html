@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reliquia | Día</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nova+Cut&display=swap" rel="stylesheet">
+</head>
+<body class="life-mode min-h-screen">
+  <header class="section-card border-b">
+    <div class="max-w-9xl mx-auto flex items-center justify-between">
+      <nav class="flex-1">
+        <ul class="flex gap-6 justify-start" id="main-menu">
+          <li>
+            <a href="dia.html" class="nav-link active font-medium text-sm" id="menu-section1">LA VIDA</a>
+          </li>
+          <li>
+            <a href="jarron.html" class="nav-link font-medium text-sm" id="menu-section2">Jarrón</a>
+          </li>
+          <li>
+            <a href="plato.html" class="nav-link font-medium text-sm" id="menu-section3">Plato</a>
+          </li>
+        </ul>
+      </nav>
+      <h1 class="Titulo text-center flex-1" id="mode-title">Reliquias</h1>
+      <div class="flex items-center gap-4 justify-end flex-1" id="toggle-container">
+        <span class="deslizador"> Muerte </span>
+        <a href="index.html" id="mode-toggle" class="toggle-switch cursor-pointer" title="Cambiar a modo noche">
+          <div class="toggle-slider" style="transform: translateX(30px);"></div>
+        </a>
+        <span class="deslizador"> Vida </span>
+      </div>
+    </div>
+  </header>
+  <section 
+    id="hero-section"
+    class="relative h-[60vh] flex items-center justify-center text-center bg-cover bg-center"
+    style="background-image: url('img/MIRADAVIDA.png');">
+    <div class="relative z-10 max-w-2xl mx-auto px-6">
+    </div>
+  </section>
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <section id="section1" class="content-section" style="position:relative;">
+      <div class="section-card rounded-lg p-4 mb-8" style="position:relative;">
+        <div class="grid grid-cols-3 grid-rows-3 gap-6 min-h-[300px]">
+          <div class="col-start-1 row-start-1 flex items-start">
+            <p class="text-lg leading-relaxed mb-4 text-left indent-6">
+              La vida es un estallido de luz, un jarrón que contiene el agua y la flor.<br>
+              Es el pulso que recorre la tierra,<br>
+              el color que despierta la mañana,<br>
+              la risa que se multiplica en el aire.
+            </p>
+          </div>
+          <div class="col-start-2 row-start-2 flex items-center">
+            <p class="text-lg leading-relaxed mb-4 text-left indent-6">
+              En su abundancia, la vida se desborda:<br>
+              cada brote es una promesa,<br>
+              cada encuentro, una celebración.<br>
+              El jarrón nunca está vacío.
+            </p>
+          </div>
+          <div class="col-start-3 row-start-3 flex items-end">
+            <p class="text-lg leading-relaxed mb-4 text-left indent-6">
+              Aquí, la vida se expande.<br>
+              Nos recuerda que cada instante —por breve que sea—<br>
+              puede ser infinito.
+            </p>
+          </div>
+          <div id="floating-images-container" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2;">
+            <img src="img/airmail-2025601_1920.png" class="floating-img" style="top:10rem;left:10px;width:170px;transform: rotate(-3deg);">
+            <img src="img/airmail-2025601_1920.png" class="floating-img" style="top:10rem;left:10px;width:170px;--img-base-transform: rotate(-3deg);">
+            <img src="img/sello.png" class="floating-img" style="top:60px;left:80%;width:150px;--img-base-transform: rotate(8deg);">
+            <img src="img/sello2.png" class="floating-img" style="top:20rem;left:30%;width:140px;--img-base-transform: none;">
+            <img src="img/sello3.png" class="floating-img" style="top:15rem;left:60%;width:140px;--img-base-transform: rotate(7deg);">
+            <img src="img/carta.png" class="floating-img" style="top:30px;left:60%;width:140px;--img-base-transform: rotate(-12deg);">
+            <img src="img/sello4.png" class="floating-img" style="top:30rem;left:10%;width:140px;--img-base-transform: rotate(-12deg);">
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <style>
+    .floating-img {
+      position: absolute;
+      transition: transform 0.5s cubic-bezier(.77,0,.18,1);
+      will-change: transform;
+      pointer-events: auto;
+      opacity: 0.92;
+      cursor: grab;
+      z-index: 2;
+      mix-blend-mode: lighten;
+      --img-base-transform: none;
+      transform: var(--img-base-transform);
+    }
+    .floating-img:hover {
+      transform: var(--img-base-transform) rotate(-6deg) scale(1.04);
+    }
+    .floating-img.dragging {
+      transition: none;
+      cursor: grabbing;
+      z-index: 1000;
+    }
+    #floating-images-container {
+      pointer-events: none;
+    }
+    #floating-images-container .floating-img {
+      pointer-events: auto;
+    }
+  </style>
+  <script>
+    // Movimiento de imágenes flotantes con el ratón y arrastrar SOLO en la tarjeta de texto
+    const imgs = document.querySelectorAll('#floating-images-container .floating-img');
+    let draggingImg = null, offsetX = 0, offsetY = 0;
+    imgs.forEach((img, i) => {
+      img.addEventListener('mousedown', e => {
+        draggingImg = img;
+        offsetX = e.clientX - img.getBoundingClientRect().left;
+        offsetY = e.clientY - img.getBoundingClientRect().top;
+        img.classList.add('dragging');
+        document.body.style.userSelect = 'none';
+      });
+    });
+    document.addEventListener('mousemove', e => {
+      if (draggingImg) {
+        const cont = document.getElementById('floating-images-container');
+        const rect = cont.getBoundingClientRect();
+        let x = e.clientX - rect.left - offsetX;
+        let y = e.clientY - rect.top - offsetY;
+        // Limita dentro del contenedor
+        x = Math.max(0, Math.min(x, rect.width - draggingImg.offsetWidth));
+        y = Math.max(0, Math.min(y, rect.height - draggingImg.offsetHeight));
+        draggingImg.style.left = x + 'px';
+        draggingImg.style.top = y + 'px';
+        draggingImg.style.transform = 'none';
+      }
+    });
+    document.addEventListener('mouseup', () => {
+      if (draggingImg) {
+        draggingImg.classList.remove('dragging');
+        draggingImg = null;
+        document.body.style.userSelect = '';
+      }
+    });
+  </script>
+</body>
+</html>

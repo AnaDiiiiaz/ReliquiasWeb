@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jarrón | Reliquia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nova+Cut&display=swap" rel="stylesheet">
+</head>
+<body class="life-mode min-h-screen jarron-page">
+  <header class="section-card border-b">
+    <div class="max-w-9xl mx-auto flex items-center justify-between">
+      <nav class="flex-1">
+        <ul class="flex gap-6 justify-start" id="main-menu">
+          <li>
+            <a href="dia.html" class="nav-link font-medium text-sm" id="menu-section1">LA VIDA</a>
+          </li>
+          <li>
+            <a href="jarron.html" class="nav-link font-medium text-sm active" id="menu-section2">Jarrón</a>
+          </li>
+          <li>
+            <a href="plato.html" class="nav-link font-medium text-sm" id="menu-section3">Plato</a>
+          </li>
+        </ul>
+      </nav>
+      <h1 class="Titulo text-center flex-1" id="mode-title">Reliquias</h1>
+      <div class="flex items-center gap-4 justify-end flex-1" id="toggle-container">
+        <span class="deslizador"> Vida </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section 
+    id="hero-section"
+    class="relative w-full h-screen flex items-center justify-center text-center bg-cover bg-center"
+    style="background-image: url('img/jarron.jpg'); min-height: 100vh;">
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="relative z-10 max-w-2xl mx-auto px-6"></div>
+
+    <!-- Indicador con click -->
+    <div id="scroll-indicator" 
+         class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce cursor-pointer">
+      <svg width="32" height="32" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-2">
+        <path d="M16 6v20M24 18l-8 8-8-8"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- VIDEO SECTION -->
+  <div id="video-section" 
+       class="flex flex-col md:flex-row items-center justify-center gap-12 bg-black text-white py-16 px-8">
+    
+    <!-- Texto a la izquierda -->
+    <div class="flex-1 text-left">
+      <h3 class="text-4xl md:text-5xl font-bold mb-6">El jarron</h3>
+      <p class="text-lg md:text-xl leading-relaxed max-w-md">
+        Fragil y contenida, esta pieza encarna la paradoja de lo que guarda y lo que se quiebra. En su interior habitó el agua, el aire, la flor y la espera.
+      </p>
+    </div>
+
+    <!-- Video a la derecha -->
+    <div class="flex-1 flex justify-center">
+      <video src="img/jarron.mp4" autoplay loop muted playsinline
+        class="rounded-2xl shadow-lg w-full max-w-2xl h-auto">
+      </video>
+    </div>
+  </div>
+
+
+
+
+  <!-- SCRIPTS -->
+  <script>
+    // Oculta el indicador al hacer scroll
+    window.addEventListener('scroll', function() {
+      const indicator = document.getElementById('scroll-indicator');
+      if (window.scrollY > window.innerHeight * 0.2) {
+        indicator.style.opacity = '0';
+        indicator.style.pointerEvents = 'none';
+      } else {
+        indicator.style.opacity = '1';
+        indicator.style.pointerEvents = 'auto';
+      }
+    });
+
+    // Al hacer clic en el indicador, baja al video
+    document.getElementById('scroll-indicator').addEventListener('click', () => {
+      document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Si el usuario desliza hacia abajo desde el hero, baja automáticamente al video
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const current = window.scrollY;
+      if (current > lastScrollTop && current < window.innerHeight * 0.3) {
+        document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
+      }
+      lastScrollTop = current;
+    });
+
+    // Animación de aparición del texto y video al hacer scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('#video-section > div').forEach(el => {
+      el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-1000');
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
