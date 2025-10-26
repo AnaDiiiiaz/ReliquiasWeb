@@ -93,16 +93,6 @@
       document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Si el usuario desliza hacia abajo desde el hero, baja automáticamente al video
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-      const current = window.scrollY;
-      if (current > lastScrollTop && current < window.innerHeight * 0.3) {
-        document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
-      }
-      lastScrollTop = current;
-    });
-
     // Animación de aparición del texto y video al hacer scroll
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
