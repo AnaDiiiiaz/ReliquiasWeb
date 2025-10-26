@@ -90,23 +90,6 @@
       document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Si el usuario desliza hacia abajo desde el hero, baja automáticamente al video
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-      const current = window.scrollY;
-      if (current > lastScrollTop && current < window.innerHeight * 0.3) {
-        document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
-      }
-      lastScrollTop = current;
-    });
-
-const textSection = document.getElementById('text-section');
-const videoContainer = document.getElementById('video-container');
-const video = document.getElementById('video');
-
-document.addEventListener('DOMContentLoaded', function() {
-  textSection.classList.add('visible');
-});
 
 // Animación de color en el título Reliquias
 const reliquias = document.getElementById('reliquias-anim');
