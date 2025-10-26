@@ -68,14 +68,5 @@
   </div>
 
 </body>
-<script>
-      let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-      const current = window.scrollY;
-      if (current > lastScrollTop && current < window.innerHeight * 0.3) {
-        document.getElementById('video-section').scrollIntoView({ behavior: 'smooth' });
-      }
-      lastScrollTop = current;
-    });
-</script>
+
 </html>
